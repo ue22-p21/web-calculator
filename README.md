@@ -12,4 +12,4 @@ The assignment is to write the **javascript companion** so that
 * the device **actually does calculations**
 * in a first step, ignore the '.' and just write an integer calculator
 
-Please commit your code in a specific folder containing your name is a directory just below the root directory.
+Please commit your code on a personal repo forked from this one.
