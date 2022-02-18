@@ -41,6 +41,9 @@ function changeNumberToDisplay(event) {
 }
 //=> renommer en "processInput" via "Renommer le symbole", ou F2, qui tentera de le renommer partout.
 
+let bool = false
+//=> Choisir un nom qui donne la sémantique du booléen. Et si ça ne suffit pas, mettre un commentaire.
+
 /**
  * Convention d'écriture
  */
@@ -149,3 +152,29 @@ console.log(eval("1+2*3"));
 // 7
 console.log(eval("2*Math.PI+Math.exp(5)"));
 // 154.6963444097562
+
+/**
+ *  Quand c'est fastidueux, y a sûrement moyen de faire plus court (et souvent avec plus de sens) 
+ */
+
+if ((touche == "0") || (touche == "1") || (touche == "2") || (touche == "3") || (touche == "4") ||
+(touche == "5") ||(touche == "6") ||(touche == "7") ||(touche == "8") ||(touche == "9")) {
+    //...
+}
+// => mettre un attribut, voire un attribut data-, une classe... quelque chose qui permet de signifier que c'est une touche,
+// et qui permet en même temps de les cibler
+
+
+/**
+ * Et finalement, mettre cela dans une classe ?
+ */
+
+ let display;
+ let operator;
+ let stack;
+ let clearRequired;
+ // A mettre dans une classe CalculatorState (=> cf redux), ou dans une classe Calculator avec alors les fonctions (=> cf POO).
+
+/**
+ * Tester, tester ;). Exemple anonymous où ça ne fonctionne que la première fois, ou après avoir appuyé sur AC
+ */
