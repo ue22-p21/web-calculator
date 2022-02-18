@@ -23,8 +23,10 @@
 {
     //...
     let aVariable = "initial_value"
-    for (let button of buttons) {button.addEventListener("click", (event) => printTargetContentToConsole(event, initial_value))}
+    for (let button of buttons) {button.addEventListener("click", (event) => printTargetContentToConsole(event, aVariable))}
 }
+//(Cf exemple 2 du cours)
+//(Cf cours partie "closure")
 
 /**
  * Nommage
@@ -59,14 +61,16 @@ function changeNumberToDisplay(event) {
      //...
  }
 
- //On fait un peu attention aux sauts de ligne, à l'indentation (ni trop, ni pas assez). Ici pas assez. parfois trop, notamment avant des }
+ //On fait un peu attention à l'indentation, aux sauts de ligne (ni trop, ni pas assez). Ici pas assez. parfois trop, notamment avant des "}"
 
+ //Bof :
 function func(event) {
     if (screen.textContent=='0') {
     screen.textContent = event.target.textContent}
     else {screen.textContent += event.target.textContent}
  }
 
+ //Mieux : 
  function func(event) {
     if (screen.textContent=='0') {
         screen.textContent = event.target.textContent
@@ -77,10 +81,14 @@ function func(event) {
  }
 
 /**
- * Ne pas se forcer à initialiser, ou initialiser à undefined (je sais, c'est pas réglo, mais c'est js)
+ * Ne pas se forcer à initialiser, quitte à initialiser à undefined (je sais, c'est pas réglo, mais c'est js)
  */ 
 
+//Bof : 
 let operande = "°";
+
+//Mieux
+let operande = undefined;
 
 
 /**
@@ -90,10 +98,10 @@ let operande = "°";
 //[Opinion] Utilisation d'une liste, on sent que c'est intéressant, mais pour l'instant c'est une liste qui n'aura jamais que deux entrées.
 
 /**
- * "DRY => SRP" ie Factorisation => séparation des responsabilités (ici de traitement vs affichahe)
- * Mais bien d'avoir séparer en petites fonctions
+ * "DRY => SRP" : Factorisation => séparation des responsabilités (ici "traitement" vs "affichage")
+ * Mais c'était vraiment bien déjà d'avoir séparé en petites fonctions
  */
- function type_number(number){
+function type_number(number){
     let scr = document.getElementById("calculator__display");
     //...
     scr.textContent = "something computed"
@@ -111,9 +119,14 @@ function calculate(){
     scr.textContent = "something else again computed"
 }
 
-//=> On factorise tout dans une fonction d'affichage qu'on appelle ensuite
+//=> On factorise tout dans une fonction d'affichage qu'on appelle ensuite dans chaque méthode
 function printToScreen(textContent) {
     document.getElementById("calculator__display").textContent = textContent;
+}
+
+function type_number(number){
+    //...
+    printToScreen("something computed")
 }
 
 /**
@@ -136,10 +149,3 @@ console.log(eval("1+2*3"));
 // 7
 console.log(eval("2*Math.PI+Math.exp(5)"));
 // 154.6963444097562
-
-
-
-
-
-
-
