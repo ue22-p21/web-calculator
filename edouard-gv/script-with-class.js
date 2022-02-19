@@ -22,9 +22,7 @@ class Calculator {
     
     constructor(display) {
         this.display = display;
-        this.operator = undefined;
-        this.stack = undefined;
-        this.clearRequired = undefined;
+        this.clearDisplay();
     }
 
     printToDisplay(text) {
@@ -89,8 +87,6 @@ window.addEventListener('load', () => {
     let keys = calculator.querySelector('.calculator__keys');
     
     calculator = new Calculator(calculator.querySelector('.calculator__display'));
-
-    calculator.clearDisplay();
     
     keys.addEventListener(
         'click', 

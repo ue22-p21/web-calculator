@@ -21,7 +21,6 @@ let display;
 let operator;
 let stack;
 let clearRequired;
-// A mettre dans une classe CalculatorState, ou dans une classe calculator avec les fonctions suivantes.
 
 function printToDisplay(text) {
     display.textContent = text;

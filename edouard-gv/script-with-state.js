@@ -21,9 +21,14 @@ class CalculatorState {
     
     constructor(display) {
         this.display = display;
-        this.operator = undefined;
+        this.clear();
+    }
+
+    clear() {
+        this.clearRequired = true;
+        this.operator = (x, y) => y; //undefined operator: just print again current display
         this.stack = undefined;
-        this.clearRequired = undefined;
+        this.display.textContent = "0";
     }
 }
 
@@ -43,13 +48,6 @@ function appendToDisplay(text) {
     }
 }
 
-function clearDisplay() {
-    printToDisplay("0");
-    state.clearRequired = true;
-    state.operator = (x, y) => y; //undefined operator: just print again current display
-    state.stack = undefined;
-}
-
 function stackOperation(anOperator) {
     state.operator = (x, y) => anOperator(parseInt(x), parseInt(y));
     state.stack = state.display.textContent;
@@ -61,9 +59,7 @@ window.addEventListener('load', () => {
     let calculator = document.querySelector('.calculator');
     let keys = calculator.querySelector('.calculator__keys');
 
-    state = new CalculatorState(calculator.querySelector('.calculator__display'), )
-
-    clearDisplay();
+    state = new CalculatorState(calculator.querySelector('.calculator__display'));
     
     keys.addEventListener(
         'click', 
@@ -71,8 +67,8 @@ window.addEventListener('load', () => {
             console.log(event.target.textContent);
             switch (event.target.textContent) {
                 case 'AC': 
-                    clearDisplay(); 
-                    break;
+                    state.clear();
+                break;
                 case '+' :
                     stackOperation((x, y) => (x+y));
                     break;
