@@ -23,7 +23,8 @@
 {
     //...
     let aVariable = "initial_value"
-    for (let button of buttons) {button.addEventListener("click", (event) => printTargetContentToConsole(event, aVariable))}
+    for (let button of buttons) {button.addEventListener("click", (event) => printTargetContentToConsole(event, button, aVariable))}
+    //Et "event.target" peut être différent de "button" (cf "bubbling")
 }
 //(Cf exemple 2 du cours)
 //(Cf cours partie "closure")
