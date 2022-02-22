@@ -165,6 +165,17 @@ if ((touche == "0") || (touche == "1") || (touche == "2") || (touche == "3") || 
 // => mettre un attribut, voire un attribut data-, une classe... quelque chose qui permet de signifier que c'est une touche,
 // et qui permet en même temps de les cibler
 
+/**
+ *  Eviter de mettre plusieurs fonctions sur le même événement, préférer de gérer cela de manière explcite.
+ *  (soit une fonction qui appelle en séquence les fonctions, soit il y a vraiment besoin de paralléliser et dans ce cas passer par
+ *  l'appel de promise en //, cf cours suivant).
+ */
+
+for (let button of buttons) {
+    button.addEventListener("click", printTargetContent);
+    button.addEventListener('click', agregate);
+    button.addEventListener("click", operation);
+}
 
 /**
  * Et finalement, mettre cela dans une classe ?
