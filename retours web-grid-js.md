@@ -43,7 +43,7 @@ souvenez-vous qu'un élément du DOM peut avoir plusieurs classes css
 du coup tester avec `elt.classList.contains('la-classe')`
 plutôt que sur une égalité
 
-pareil pour ajouter une classe, faire .addClass('square') plutôt que className =
+pareil pour ajouter une classe, faire `elt.classList.add('square')` plutôt que className =
 'square'
 
 # sur web-grid-js en particulier
