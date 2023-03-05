@@ -9,7 +9,6 @@
     for (let button of buttons) {button.addEventListener("click", printTargetContentToConsole)}      
 }
 
-
 {
     //...
     for (let button of buttons) {button.addEventListener("click", () => printTargetContentToConsole())}      
@@ -84,6 +83,14 @@ function func(event) {
     }
  }
 
+// Et pas de blocs vides !
+  if (affichage.textContent == 0) {
+  }
+  else {
+      affichage.textContent += '0'
+  }
+
+
 /**
  * Ne pas se forcer à initialiser, quitte à initialiser à undefined (je sais, c'est pas réglo, mais c'est js)
  */ 
@@ -105,6 +112,11 @@ let operande = undefined;
  * "DRY => SRP" : Factorisation => séparation des responsabilités (ici "traitement" vs "affichage")
  * Mais c'était vraiment bien déjà d'avoir séparé en petites fonctions
  */
+
+
+//si qqch apparait dix fois => variable locale avec le bon nom
+document.getElementsByClassName("calculator__display")[0] 
+
 function type_number(number){
     let scr = document.getElementById("calculator__display");
     //...
@@ -186,6 +198,39 @@ for (let button of buttons) {
  let stack;
  let clearRequired;
  // A mettre dans une classe CalculatorState (=> cf redux), ou dans une classe Calculator avec alors les fonctions (=> cf POO).
+
+ // Ou encore : mettre des événements différents, au lieu de metttre un fonction qui switche : intéressant, ça ressemble à des webcomponent.
+
+    document.getElementById("clear").addEventListener("click",()=>
+        {
+            document.getElementById("display").textContent = "";
+            current_num = "";
+            start = true;
+            s = 0;
+        }
+    );
+
+    document.getElementById("decimal").addEventListener("click",()=>
+        {
+            document.getElementById("display").textContent = document.getElementById("display").textContent + ".";
+            current_num = current_num + ".";
+        }
+    );
+
+
+/**
+ * Traiter les erreurs, c'est bien !
+ */
+
+  if (operator == "÷") {
+    if(current == "0") {
+      current = "error";
+    }
+  }
+
+/**
+ * Y en a quelques uns qui n'ont pas réussi à aller très loin. Ne pas désespérer, c'est une histoire de quelques heures, facilement rattrapables.
+ */
 
 /**
  * Tester, tester ;). Exemple anonymous où ça ne fonctionne que la première fois, ou après avoir appuyé sur AC
